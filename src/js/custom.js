@@ -43,7 +43,7 @@ function dialogCampaign(){
         src  : '#campaignmodal',
         type : 'inline',
         opts : {
-            onComplete : function() {
+            afterShow : function() {
                 // Remove previous on-click event listeners
                 $('.modal-btn-cancel', modalContainer).off('click');
                 $('.modal-btn-ok', modalContainer).off('click');

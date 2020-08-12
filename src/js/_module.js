@@ -210,7 +210,7 @@ var Module = {
                         // Clear the modal form
                         $('[data-image="src"]', modalContainer).attr('src', '');
                     },
-                    onComplete : function() {
+                    afterShow : function() {
                         // Remove previous on-click event listeners
                         $('.modal-btn-cancel', modalContainer).off('click');
                         $('.modal-btn-ok', modalContainer).off('click');
@@ -420,5 +420,3 @@ emitter.on('update_template', function () {
 
 // Export Module object
 module.exports = Module;
-
-
