@@ -48,7 +48,7 @@ require_once '_header.php';
         <div class="sidebar-footer">
             <a class="btn-main" href="#" data-action="campaign-settings">Save Campaign</a>
             <!-- <a class="btn-second" href="theme.php">Choose template</a> -->
-            <a class="btn-second" href="/">Back to Dashboard</a>
+            <a class="btn-second" href="https://emailcampaign.me/">Back to Dashboard</a>
         </div>
     </div>
     <!-- Main Container -->
