@@ -46,7 +46,7 @@ require_once '_header.php';
             </li>
         </ul>
         <div class="sidebar-footer">
-            <a class="btn-main" href="#" data-action="campaign-settings">Save as new Campaign</a>
+            <a class="btn-main" href="#" data-action="campaign-settings">Save Campaign</a>
             <!-- <a class="btn-second" href="theme.php">Choose template</a> -->
             <a class="btn-second" href="/">Back to Dashboard</a>
         </div>
@@ -196,7 +196,7 @@ require_once '_header.php';
 <div id="campaignmodal" class="modal-container">
     <div class="input-row">
         <div class="input-group">
-            <input class="input-control" type="text" name="subject" value="" placeholder="Subject">
+            <input class="input-control" type="text" name="subject" value="" placeholder="Email Subject">
         </div>
         <div class="input-group">
             <?php
@@ -231,26 +231,25 @@ require_once '_header.php';
         <div class="input-group">
             <input class="input-control" type="text" name="reply_to" value="" placeholder="Reply To">
         </div>
-        <div class="input-group">
+        <div class="input-group" style="display: none;">
             <input class="input-control" type="text" name="query_string" value="" placeholder="Query String">
         </div>
     </div>
 
-    <div class="input-row" id="save-campaign-recipients">
-        <h4>Recipients</h4>
+    <div class="input-row" style="display: none;">
         <div class="input-group">
             <textarea name="plain_text"></textarea>
         </div>
         <div class="input-group checkbox-wrapper" id="subscribers-list-container">
-            Select a Brand to view its recipient list.
+            Please, choose Brand first. List IDs are required if you want to send a campaign.
         </div>
     </div>
-    <div class="input-group">
-        <label><input id="toggle-save-campaign-recipients" type="checkbox" name="send_campaign" value="1"> Send campaign</label>
+    <div class="input-group" style="display: none;">
+        <label><input type="checkbox" name="send_campaign" value="0"> Send campaign</label>
     </div>
     <div class="modal-controls">
         <button class="modal-btn-cancel">Cancel</button>
-        <button class="modal-btn-ok">OK</button>
+        <button class="modal-btn-ok">Save Campaign (Draft)</button>
     </div>
 </div>
 
