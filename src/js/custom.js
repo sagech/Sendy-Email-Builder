@@ -117,7 +117,7 @@ function dialogCampaign(){
                                                             showLoaderOnConfirm: true
                                                         }, shouldVisitCampaign => {
                                                             if (shouldVisitCampaign) {
-                                                                window.location.href = `https://emailcampaign.me/send-to?i=${latestCampaignResponse.app}&c=${latestCampaignResponse.id}`
+                                                                window.location.href = `https://emailcampaign.me/send-to?i=${latestCampaignResponse.campaign.app}&c=${latestCampaignResponse.campaign.id}`
                                                             }
                                                         });
                                                         // Reset campaign form

@@ -196,9 +196,6 @@ require_once '_header.php';
 <div id="campaignmodal" class="modal-container">
     <div class="input-row">
         <div class="input-group">
-            <input class="input-control" type="text" name="subject" value="" placeholder="Email Subject">
-        </div>
-        <div class="input-group">
             <?php
             $userAppID = App::getUserApp();
 
@@ -217,6 +214,9 @@ require_once '_header.php';
                     <option value="<?php echo $brand['id']?>"><?php echo $brand['app_name']?></option>
                 <?php } ?>
             </select>
+        </div>
+        <div class="input-group">
+            <input class="input-control" type="text" name="subject" value="" placeholder="Email Subject">
         </div>
     </div>
     <div class="input-row">
