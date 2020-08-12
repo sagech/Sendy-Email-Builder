@@ -46,8 +46,9 @@ require_once '_header.php';
             </li>
         </ul>
         <div class="sidebar-footer">
-            <a class="btn-main" href="#" data-action="campaign-settings">Save Campaign</a>
-            <a class="btn-second" href="theme.php">Choose template</a>
+            <a class="btn-main" href="#" data-action="campaign-settings">Save as new Campaign</a>
+            <!-- <a class="btn-second" href="theme.php">Choose template</a> -->
+            <a class="btn-second" href="/">Back to Dashboard</a>
         </div>
     </div>
     <!-- Main Container -->
@@ -235,16 +236,17 @@ require_once '_header.php';
         </div>
     </div>
 
-    <div class="input-row">
+    <div class="input-row" id="save-campaign-recipients">
+        <h4>Recipients</h4>
         <div class="input-group">
             <textarea name="plain_text"></textarea>
         </div>
         <div class="input-group checkbox-wrapper" id="subscribers-list-container">
-            Please, choose Brand first. List IDs are required if you want to send a campaign.
+            Select a Brand to view its recipient list.
         </div>
     </div>
     <div class="input-group">
-        <label><input type="checkbox" name="send_campaign" value="1"> Send campaign</label>
+        <label><input id="toggle-save-campaign-recipients" type="checkbox" name="send_campaign" value="1"> Send campaign</label>
     </div>
     <div class="modal-controls">
         <button class="modal-btn-cancel">Cancel</button>

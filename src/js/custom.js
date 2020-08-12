@@ -222,4 +222,13 @@ emitter.on('init', function () {
             }
         });
     });
+
+    $(document).on('change', '#toggle-save-campaign-recipients', function() {
+      if(this.checked) {
+        $("#save-campaign-recipients").show();
+      } else {
+        $("#save-campaign-recipients").hide();
+      }
+
+    });
 });
