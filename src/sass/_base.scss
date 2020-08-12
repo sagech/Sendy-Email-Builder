@@ -35,7 +35,6 @@ body {
 #email-builder .sidebar-top {
   padding: 10px;
   text-align: center;
-  display: none;
 
   .item {
     display: inline-block;
@@ -97,8 +96,6 @@ body {
     background: $editor-bg-color;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
     position: relative;
-    width: 600px;
-    margin: 0 auto;
   }
 
 }
