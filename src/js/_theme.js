@@ -153,7 +153,9 @@ emitter.on('update_template', function () {
     // Update template HTML
     var templateHeader = Theme.getHeader();
     var templateFooter = Theme.getFooter();
-    var curTemplateHTML = $('[data-type="editor"]').html();
+    var editorDOM = $('[data-type="editor"]').clone()
+    editorDOM.find('*').removeAttr('contenteditable data-editable data-medium-editor-editor-index data-medium-editor-element data-placeholder medium-editor-index spellcheck');
+    var curTemplateHTML = editorDOM.html();
     var templateHTML = templateHeader + curTemplateHTML + templateFooter;
     $('#templateHTML').val(btoa(templateHTML));
 });
@@ -162,5 +164,3 @@ emitter.on('update_template', function () {
 
 // Export Theme object
 module.exports = Theme;
-
-
