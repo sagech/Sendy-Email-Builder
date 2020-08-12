@@ -91,6 +91,25 @@ if(isset($_POST['get_lists'])){
     exit;
 }
 
+if(isset($_POST['get_latest_campaign'])){
+    // Get brand id
+    $brand_id = isset($_POST['brand_id']) ? $_POST['brand_id'] : '';
+    // Get list of the subscriber lists
+    $latest_campaign = App::DBQuery('SELECT `id`, `app` FROM `campaigns` WHERE `app`="' . $brand_id . '" ORDER BY `id` DESC LIMIT 1')->fetch();
+
+    if ($latest_campaign == false) {
+      // No row - error
+    } else {
+      $response=array(
+        'campaign'	=>	$latest_campaign,
+        'type'		=>	'success'
+      );
+    }
+
+    print json_encode($response);
+    exit;
+}
+
 if(isset($_POST['get_brand_info'])){
     // Get brand id
     $brand_id = isset($_POST['brand_id']) ? $_POST['brand_id'] : '';
@@ -105,8 +124,7 @@ if(isset($_POST['get_brand_info'])){
             ),
             'type'		=>	'success'
         );
-    }else {
-
+    } else {
         $response = array(
             'message' => $brand_info,
             'type' => 'success'

@@ -84,27 +84,57 @@ function dialogCampaign(){
                                     'query_string' : $('input[name=query_string]').val()
                                 },
                                 success : function( data ) {
-
                                     if ( data['type'] == 'success' ) {
                                         var result = data['message'];
+
+                                        // Get latest campaign
                                         if(result.status === true) {
-                                            swal("Success", result.message, "success");
-                                            // Reset campaign form
-                                            $('input[name=from_name]').val('');
-                                            $('input[name=from_email]').val('');
-                                            $('input[name=reply_to]').val('');
-                                            $('input[name=subject]').val('');
-                                            $('input[name=plain_text]').val('');
-                                            $('input[name=send_campaign]').prop('checked', false);
-                                            $('input[name=query_string]').val('');
-                                            // Close Modal
-                                            $.fancybox.close();
-                                        }else{
-                                            swal("Error", result.message, "error");
+                                            $.ajax({
+                                                url     : '_ajax.php',
+                                                type    : 'POST',
+                                                dataType: 'json',
+                                                data    :  {
+                                                    'get_latest_campaign' : 1,
+                                                    'brand_id' : $('#brand_id').val()
+                                                },
+                                                success : function( latestCampaignResponse ) {
+                
+                                                    if ( data['type'] == 'success' ) {
+                                                        swal({
+                                                            title: "Success",
+                                                            text: result.message,
+                                                            type: "success",
+                                                            confirmButtonText: "Go to campaign page",
+                                                            showCancelButton: true,
+                                                            closeOnConfirm: false,
+                                                            showLoaderOnConfirm: true
+                                                        }).then(shouldVisitCampaign => {
+                                                            if (shouldVisitCampaign) {
+                                                                window.location.href = `/send-to?i=${latestCampaignResponse.app}&c=${latestCampaignResponse.id}`
+                                                            }
+                                                        });
+                                                        // Reset campaign form
+                                                        $('input[name=brand_id]').val('');
+                                                        $('input[name=from_name]').val('');
+                                                        $('input[name=from_email]').val('');
+                                                        $('input[name=reply_to]').val('');
+                                                        $('input[name=subject]').val('');
+                                                        $('input[name=plain_text]').val('');
+                                                        $('input[name=send_campaign]').prop('checked', false);
+                                                        $('input[name=query_string]').val('');
+                                                        // Close Modal
+                                                        $.fancybox.close();
+                                                    } else {
+                                                        swal("Error", result.message, "error");
+                                                    }
+                                                },
+                                                error   : function( xhr, err ) {
+                                                    // Log errors if AJAX call is failed
+                                                    console.log(xhr);
+                                                    console.log(err);
+                                                }
+                                            });
                                         }
-
-
-
                                     }
                                 },
                                 error   : function( xhr, err ) {
