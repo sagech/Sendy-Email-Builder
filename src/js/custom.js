@@ -66,6 +66,13 @@ function dialogCampaign(){
                             $(".list_ids:checked").each(function() {
                                 list_ids.push(this.value);
                             });
+
+                            const current_date = new Date();
+
+                            let email_subject = $('input[name=subject]').val().length == 0
+                                ? `Campaign - ${current_date.toLocaleString()}`
+                                : $('input[name=subject]').val();
+                                
                             $.ajax({
                                 url     : '_ajax.php',
                                 type    : 'POST',
@@ -75,7 +82,7 @@ function dialogCampaign(){
                                     'from_name' : $('input[name=from_name]').val(),
                                     'from_email' : $('input[name=from_email]').val(),
                                     'reply_to' : $('input[name=reply_to]').val(),
-                                    'subject' : $('input[name=subject]').val(),
+                                    'subject' : email_subject,
                                     'plain_text' : $('input[name=plain_text]').val(),
                                     'html_text' : $('#templateHTML').val(),
                                     'brand_id' : $('#brand_id').val(),
@@ -108,7 +115,7 @@ function dialogCampaign(){
                                                             showCancelButton: true,
                                                             closeOnConfirm: false,
                                                             showLoaderOnConfirm: true
-                                                        }).then(shouldVisitCampaign => {
+                                                        }, shouldVisitCampaign => {
                                                             if (shouldVisitCampaign) {
                                                                 window.location.href = `/send-to?i=${latestCampaignResponse.app}&c=${latestCampaignResponse.id}`
                                                             }
